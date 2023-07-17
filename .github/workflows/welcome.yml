@@ -6,13 +6,13 @@ permissions:
   pull-requests: write
 jobs:
   build:
-    name: Post welcome message
+    name: Setup Artifactory
     runs-on: ubuntu-latest
     steps:
-      - run: gh pr comment $PR_URL --body "Testing Jfrog integration"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
+#       - run: gh pr comment $PR_URL --body "Testing Jfrog integration"
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           PR_URL: ${{ github.event.pull_request.html_url }}
       - uses: jfrog/setup-jfrog-cli@v3
         env:
           # JFrog platform url (for example: https://acme.jfrog.io) 
@@ -23,3 +23,5 @@ jobs:
       - run: |
           # Ping the server
           jf rt ping
+          jf rt u README.md default-generic-local/README.md
+          
