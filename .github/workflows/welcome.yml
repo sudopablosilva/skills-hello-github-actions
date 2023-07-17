@@ -22,4 +22,5 @@ jobs:
           JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
       - run: |
           # Ping the server
+          echo "pinging the jfrog server"
           jf rt ping
