@@ -34,5 +34,5 @@ jobs:
       - run: |
           # Ping the server
           jf rt ping
-          #jf rt u README.md default-generic-local/README.md
+          jf rt u README.md default-generic-local/README.md
           
