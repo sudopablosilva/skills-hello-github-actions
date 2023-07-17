@@ -2,6 +2,9 @@ name: Post welcome comment
 on:
   pull_request:
     types: [opened]
+  push:
+    branches:
+      - 'jfrog-integration'
 permissions:
   pull-requests: write
 jobs:
@@ -9,10 +12,16 @@ jobs:
     name: Setup Artifactory
     runs-on: ubuntu-latest
     steps:
-#       - run: gh pr comment $PR_URL --body "Testing Jfrog integration"
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           PR_URL: ${{ github.event.pull_request.html_url }}
+      - uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: 'my-artifact'
+          path: path/to/artifacts
+
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
       - uses: jfrog/setup-jfrog-cli@v3
         env:
           # JFrog platform url (for example: https://acme.jfrog.io) 
@@ -23,5 +32,5 @@ jobs:
       - run: |
           # Ping the server
           jf rt ping
-          jf rt u README.md default-generic-local/README.md
+          #jf rt u README.md default-generic-local/README.md
           
