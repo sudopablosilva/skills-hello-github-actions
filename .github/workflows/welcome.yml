@@ -18,7 +18,11 @@ jobs:
         id: download
         with:
           name: 'my-artifact'
-          path: path/to/artifacts
+          path: /
+
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: /
 
       - name: 'Echo download path'
         run: echo ${{steps.download.outputs.download-path}}
