@@ -1,0 +1,16 @@
+name: Step 6, Pablo
+
+# This step triggers after every push to welcome-workflow.
+# This workflow updates from step 3 to step 4.
+
+# This will run every time we push to welcome-workflow.
+# Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+on:
+  workflow_dispatch:
+  
+jobs:
+  # Get the current step to only run the main job when the learner is on the same step.
+  myjob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was triggered. This is the event: ${{ github.event_name }}"
