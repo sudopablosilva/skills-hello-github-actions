@@ -1,0 +1,15 @@
+name: Step 6, Pablo
+
+# This step triggers after every push to welcome-workflow.
+# This workflow updates from step 3 to step 4.
+
+# This will run every time we push to welcome-workflow.
+# Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+on:
+  workflow_dispatch:
+  
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
