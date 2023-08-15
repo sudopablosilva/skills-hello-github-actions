@@ -13,4 +13,4 @@ jobs:
   myjob:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was triggered. This is the event: ${{ github.event_name }}"
+      - run: echo "🎉 The job was triggered. This is the event ${{ github.event_name }}"
