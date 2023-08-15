@@ -9,8 +9,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  # Get the current step to only run the main job when the learner is on the same step.
-  myjob:
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was triggered. This is the event ${{ github.event_name }}"
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
